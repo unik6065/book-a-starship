@@ -18,6 +18,11 @@ RSpec.describe User, type: :model do
       user = User.new(first_name: 'toto', last_name: 'toto', email: 'toto@gmail.com').save
       expect(user).to eq(false)
     end
+    it 'should not allows two people to have the same email' do
+      User.new(first_name: 'toto', last_name: 'toto', email: 'toto@gmail.com', password: '123456').save
+      user2 = User.new(first_name: 'toto', last_name: 'toto', email: 'toto@gmail.com', password: '123456').save
+      expect(user2).to eq(false)
+    end
     it 'should save successfully' do
       user = User.new(first_name: 'toto', last_name: 'toto', email: 'toto@gmail.com', password: '123456').save
       expect(user).to eq(true)
