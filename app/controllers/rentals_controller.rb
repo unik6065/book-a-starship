@@ -17,7 +17,7 @@ class RentalsController < ApplicationController
     if @rental.save
       redirect_to rental_path(@rental)
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -25,13 +25,16 @@ class RentalsController < ApplicationController
   end
 
   def update
-    @rental.update(rental_params)
-    redirect_to rental_path(@rental)
+    if @rental.update(rental_params)
+      redirect_to rental_path(@rental)
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def destroy
     @rental.destroy
-    redirect_to rentals_path
+    redirect_to rentals_path status: :see_other
   end
 
   def show
