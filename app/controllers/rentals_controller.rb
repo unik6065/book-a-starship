@@ -20,23 +20,19 @@ class RentalsController < ApplicationController
   end
 
   def edit
-    @rental = Rental.find(params[:id])
   end
 
   def update
-    @rental = Rental.find(params[:id])
     @rental.update(rental_params)
     redirect_to rental_path(@rental)
   end
 
   def destroy
-    @rental = Rental.find(params[:id])
     @rental.destroy
     redirect_to rentals_path
   end
 
   def show
-    @rental = Rental.find(params[:id])
   end
 
   private
@@ -46,6 +42,6 @@ class RentalsController < ApplicationController
   end
 
   def rental_params
-    params.require(:rental).permit(:start_date, :end_date, :price, :starship_id)
+    params.require(:rental).permit(:start_date, :end_date, :starship_id)
   end
 end
