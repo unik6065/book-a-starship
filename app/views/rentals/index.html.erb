@@ -1,1 +1,11 @@
-<h2>Rentals index</h2>
+<h2>My rentals</h2>
+<% @rentals.each do |rental| %>
+  <% if rental.user.id == current_user.id %>
+    <div class="rental">
+      <h3><%= rental.title %></h3>
+      <p><%= rental.starship.photo %></p>
+      <p><%= rental.description %></p>
+      <p><%= rental.price %></p>
+    </div>
+  <% end %>
+<% end %>
