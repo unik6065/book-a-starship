@@ -1,7 +1,9 @@
 class RentalsController < ApplicationController
   before_action :set_rental, only: %i[show edit update destroy]
+
+  # Index only shows rentals for the current user
   def index
-    @rentals = Rental.all
+    @rentals = current_user.rentals
   end
 
   def new
