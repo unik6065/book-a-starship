@@ -44,6 +44,6 @@ class StarshipsController < ApplicationController
   end
 
   def starship_params
-    params.require(:starship).permit(:name, :description, :pickup_city, :photo, :description, :price_per_day, :loaner_id )
+    params.require(:starship).permit(:name, :description, :pickup_city, :price_per_day, :loaner_id, photos: [])
   end
 end
