@@ -21,15 +21,15 @@ end
 
 puts 'creating starships'
 10.times do
-  starship = Starship.create!(
+  starship = Starship.new(
     name: Faker::Fantasy::Tolkien.character,
     description: Faker::Books::Lovecraft.sentence,
     pickup_city: Faker::Nation.capital_city,
-    loaner_id: User.all.sample,
+    loaner_id: User.all.sample.id,
     price_per_day: rand(100..500)
   )
-  # starship.photos.attach(io: file, filename: 'starship.jpg', content_type: 'image/jpg')
-  # starship.save!
+  starship.photos.attach(io: file, filename: 'starship.jpg', content_type: 'image/jpg')
+  starship.save!
   puts 'created starship'
 end
 
@@ -38,8 +38,8 @@ puts 'creating rentals'
   Rental.create!(
     start_date: Faker::Date.backward(days: 14),
     end_date: Faker::Date.forward(days: 23),
-    starship_id: rand(1..5),
-    renter_id: rand(1..5),
+    starship_id: Starship.all.sample.id,
+    renter_id: User.all.sample.id,
     price: rand(1000..5000)
   )
   puts 'created rental'
