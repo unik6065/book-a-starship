@@ -23,7 +23,7 @@ RSpec.describe Starship, type: :model do
     end
 
     it 'should save successfully' do
-      starship = Starship.new(description: 'une petite description', name: 'faucon millenium', price_per_day: 12.5 ).save
+      starship = Starship.new(description: 'une petite description', name: 'faucon millenium', price_per_day: 12.5).save
       expect(starship).to eq(true)
     end
   end
