@@ -1,7 +1,9 @@
 class Starship < ApplicationRecord
-  # belongs_to :user, foreign_key: "loaner_id"
-  # has_many :rentals, dependent: :destroy
-  # has_many :reviews, through: :rentals, dependent: :destroy
+  belongs_to :user
+  has_many :rentals, dependent: :destroy
+  has_many :renters, through: :rentals
+  has_many :reviews, through: :rentals, dependent: :destroy
+  has_many_attached :photos
 
   validates :name, presence: true
   validates :description, presence: true
