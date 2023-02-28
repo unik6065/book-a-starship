@@ -4,8 +4,8 @@
   </div>
   <div class="row">
     <% @starships.each do |starship| %>
-      <div class="card-trip">
-        <%= render "carousel_photos" %>
+      <div class="card-trip m-2">
+        <%# <%= render "carousel_photos" %>
         <div class="card-trip-infos">
           <div>
             <h2><%= starship.name %></h2>
@@ -15,6 +15,6 @@
           <h2 class="card-trip-pricing"><%= starship.price_per_day %></h2>
         </div>
       </div>
-    </div>
+    <% end %>
   </div>
 </div>
