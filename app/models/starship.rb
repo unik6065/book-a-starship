@@ -1,7 +1,7 @@
 class Starship < ApplicationRecord
   belongs_to :user
   has_many :rentals, dependent: :destroy
-  has_many :renters, through: :rentals, source: :renter
+  has_many :renters, through: :rentals
   has_many :reviews, through: :rentals, dependent: :destroy
   has_many_attached :photos
 
