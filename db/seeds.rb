@@ -1,7 +1,10 @@
 require 'faker'
 
-puts 'cleaning database'
-User.delete_all
+# puts 'cleaning database'
+# Review.destroy_all
+# Rental.destroy_all
+# Starship.destroy_all
+# User.destroy_all
 
 puts 'creating users'
 5.times do
@@ -36,6 +39,16 @@ puts 'creating rentals'
     price: rand(1000..5000)
   )
   puts 'created rental'
+end
+
+puts 'creating reviews'
+10.times do
+  Review.create!(
+    content: Faker::TvShows::BigBangTheory.quote,
+    rating: rand(3..5),
+    rental_id: rand(1..10)
+  )
+  puts 'created review'
 end
 
 puts 'seed finished'
