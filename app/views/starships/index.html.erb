@@ -1,0 +1,26 @@
+<div class="container py-5">
+  <div class="d-flex align-items-center justify-content-between mb-3">
+    <h1 class="mb-0">Starships</h1>
+  </div>
+  <div class="row">
+    <% @starships.each do |starship| %>
+      <div class="co-12 col-sm-6 col-md-4 mb-3">
+          <div class="card-trip" data-aos="zoom-in" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= starship.photo.attached? ? cl_image_path(starship.photo.key) : asset_path('list_background.jpg') %>)">
+            <%= list.name %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="card-trip">
+  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+  <div class="card-trip-infos">
+    <div>
+      <h2>starship.name</h2>
+      <p>starship.comment</p>
+    </div>
+    <h2 class="card-trip-pricing">starship.price_per_day</h2>
+  </div>
+</div>
