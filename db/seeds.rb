@@ -1,10 +1,12 @@
 require 'faker'
-
+require 'open-uri'
 # puts 'cleaning database'
 # Review.destroy_all
 # Rental.destroy_all
 # Starship.destroy_all
 # User.destroy_all
+
+file = URI.open("https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Millennium_Falcon_Star_Wars_Galaxy%27s_Edge_Disneyland_Resort_in_Anaheim%2C_California_%2848512627247%29.jpg/1920px-Millennium_Falcon_Star_Wars_Galaxy%27s_Edge_Disneyland_Resort_in_Anaheim%2C_California_%2848512627247%29.jpg")
 
 puts 'creating users'
 5.times do
@@ -19,13 +21,15 @@ end
 
 puts 'creating starships'
 10.times do
-  Starship.create!(
+  starship = Starship.create!(
     name: Faker::Fantasy::Tolkien.character,
     description: Faker::Books::Lovecraft.sentence,
     pickup_city: Faker::Nation.capital_city,
-    loaner_id: rand(1..5),
-    price_per_day: rand(100..500),
+    loaner_id: User.all.sample,
+    price_per_day: rand(100..500)
   )
+  # starship.photos.attach(io: file, filename: 'starship.jpg', content_type: 'image/jpg')
+  # starship.save!
   puts 'created starship'
 end
 
