@@ -1,5 +1,5 @@
 class Rental < ApplicationRecord
-  belongs_to :user
+  belongs_to :renter, class_name: 'User'
   belongs_to :starship
   has_many :reviews, dependent: :destroy
   validates :start_date, presence: true, format: {
