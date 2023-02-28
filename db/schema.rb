@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_28_093114) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_28_130623) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -53,6 +53,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_28_093114) do
     t.index ["starship_id"], name: "index_rentals_on_starship_id"
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.text "content"
+    t.integer "rating"
+    t.bigint "rental_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["rental_id"], name: "index_reviews_on_rental_id"
+  end
+
   create_table "starships", force: :cascade do |t|
     t.string "name"
     t.string "description"
@@ -81,5 +90,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_28_093114) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "rentals", "starships"
   add_foreign_key "rentals", "users", column: "renter_id"
+  add_foreign_key "reviews", "rentals"
   add_foreign_key "starships", "users", column: "loaner_id"
 end
