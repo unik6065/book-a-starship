@@ -5,4 +5,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  # Define a nested route in starship for the rental index page
+  resources :starships do
+    resources :rentals, only: [:index]
+  end
 end
