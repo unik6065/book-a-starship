@@ -1,10 +1,10 @@
 require 'faker'
 require 'open-uri'
-# puts 'cleaning database'
+puts 'cleaning database'
 # Review.destroy_all
-# Rental.destroy_all
-# Starship.destroy_all
-# User.destroy_all
+Rental.destroy_all
+Starship.destroy_all
+User.destroy_all
 
 puts 'creating users'
 5.times do
