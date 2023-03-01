@@ -18,7 +18,6 @@ class RentalsController < ApplicationController
     # rental price is calculated by multiplying the price per day of the starship
     # by the number of days and is at minimum equal to the price per day
     @rental.price = [@rental.starship.price_per_day * (@rental.end_date - @rental.start_date).to_i, @rental.starship.price_per_day].max
-    puts @rental.valid?
     if @rental.save
       redirect_to rentals_path
     else
