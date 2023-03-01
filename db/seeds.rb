@@ -6,8 +6,6 @@ require 'open-uri'
 # Starship.destroy_all
 # User.destroy_all
 
-file = URI.open("https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Millennium_Falcon_Star_Wars_Galaxy%27s_Edge_Disneyland_Resort_in_Anaheim%2C_California_%2848512627247%29.jpg/1920px-Millennium_Falcon_Star_Wars_Galaxy%27s_Edge_Disneyland_Resort_in_Anaheim%2C_California_%2848512627247%29.jpg")
-
 puts 'creating users'
 5.times do
   User.create!(
@@ -21,6 +19,7 @@ end
 
 puts 'creating starships'
 10.times do
+  file = URI.open("http://poopss.p.o.pic.centerblog.net/o/e04b1581.jpg")
   starship = Starship.new(
     name: Faker::Fantasy::Tolkien.character,
     description: Faker::Books::Lovecraft.sentence,
@@ -28,7 +27,7 @@ puts 'creating starships'
     loaner_id: User.all.sample.id,
     price_per_day: rand(100..500)
   )
-  starship.photos.attach(io: file, filename: 'starship.jpg', content_type: 'image/jpg')
+  starship.photos.attach(io: file, filename: 'starship.png', content_type: 'image/png')
   starship.save!
   puts 'created starship'
 end
@@ -50,7 +49,7 @@ puts 'creating reviews'
   Review.create!(
     content: Faker::TvShows::BigBangTheory.quote,
     rating: rand(3..5),
-    rental_id: rand(1..10)
+    rental_id: Rental.all.sample.id
   )
   puts 'created review'
 end
