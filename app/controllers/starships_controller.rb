@@ -1,5 +1,5 @@
 class StarshipsController < ApplicationController
-  before_action :set_starship, only: %i[new create update destroy]
+  before_action :set_starship, only: %i[new create show update destroy]
   def index
     @starships = Starship.all
   end
@@ -19,7 +19,6 @@ class StarshipsController < ApplicationController
   end
 
   def show
-    @starship = Starship.find(params[:id])
   end
 
   def edit
