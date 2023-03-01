@@ -9,5 +9,4 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   # Define a route to access rentals index page
-  resources :rentals, only: %i[index]
 end
