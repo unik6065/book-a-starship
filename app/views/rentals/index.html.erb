@@ -1,11 +1,16 @@
 <h2>My rentals</h2>
 <% @rentals.each do |rental| %>
-  <%# display only the rentals for current user%>
-  <% if rental.user == current_user %>
+  <%# display only the rentals for the current user%>
+  <% if rental.renter_id == current_user.id %>
     <div class="rental">
-      <h3>Rental ID:<%= rental.id%> Starship:<% rental.starship.name %></h3>
-      <p><%= rental.starship.photo %></p>
-      <p><%= rental.description %></p>
+      <h3>Rental ID:<%= rental.id%> Starship:<%= rental.starship.name %></h3>
+      <%# display all photos of the starship%>
+      <ul>
+        <% rental.starship.photos.each do |photo|%>
+          <li><%= cl_image_tag photo.key, height: 100, width:150, crop: :fill %></li>
+        <%end%>
+      </ul>
+      <p><%= rental.starship.description %></p>
       <p>Start:<%= rental.start_date %> End:<%= rental.end_date %></p>
       <p>Total price: CHF <%= rental.price %>.-</p>
     </div>

@@ -3,7 +3,7 @@
 <%# create a new rental by selecting a start date and end date in the format YYYY-MM_DD%>
 <%# the start_date can't be prior to today%>
 <%# the end_date can't be prior to the start_date%>
-<%= form_for @rental do |f| %>
+<%= form_for [@starship, @rental] do |f| %>
   <div class="field">
     <%= f.label :start_date %><br>
     <%= f.date_field :start_date, min: Date.today %>
@@ -15,3 +15,4 @@
   <div class="actions">
     <%= f.submit %>
   </div>
+<% end %>
