@@ -1,17 +1,35 @@
-<div class="border">
-  <div>
+<div>
+  <div class="info-starship-header">
     <h1 class="text-center"><%= @starship.name %></h1>
   </div>
   <div class="row">
-     <div class="col-sm-4 border"><h1>maps</h1></div>
-    <div class="col-sm-8 border info-starship-card">
-    <h1>info</h1>
-    <%= @starship.name %>
-    <%= @starship.photos%>
-    <div class="info-starship-bubble">
-    <p> <%= @starship.description %></p>
+    <div class="col-sm-4">
+      <%= image_tag("map.png", size: "250x400") %>
     </div>
-    </div>
-  </div>
 
+    <div class="col-sm-8 info-starship-card">
+      <div class="ml-5">
+      <% @starship.photos.each do |photo|%>
+      <%= cl_image_tag photo.key, height: 200, width: 350, crop: :fill%>
+      <% end %>
+      </div>
+
+      <h4>Pickup city</h4>
+      <%= @starship.pickup_city%>
+      <p></p>
+      <h4>Price per day</h4>
+      <p><%= @starship.price_per_day%> CHF</p>
+      <p></p>
+      <h4>Owner</h4>
+      <p><%= User.find(@starship.loaner_id).first_name %></p>
+      <div class="info-starship-bubble">
+      <p> <%= @starship.description %></p>
+      </div>
+      <div class="d-flex justify-content-end">
+      <button>
+      <%=link_to "Reserve this starship", starship_id_rental_new_path %>
+      </button>
+      </div>
+
+  </div>
 </div>

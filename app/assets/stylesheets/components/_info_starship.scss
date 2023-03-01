@@ -1,6 +1,13 @@
-.info-starship-card {
+.info-starship-header {
   h1{
-    color: red;
+
+  }
+  padding: 10px;
+}
+
+.info-starship-card {
+  h4{
+    text-decoration: underline;
   }
 }
 
