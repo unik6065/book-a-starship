@@ -1,7 +1,8 @@
 require 'faker'
 require 'open-uri'
+
 puts 'cleaning database'
-# Review.destroy_all
+Review.destroy_all
 Rental.destroy_all
 Starship.destroy_all
 User.destroy_all
