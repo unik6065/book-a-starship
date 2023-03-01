@@ -12,14 +12,16 @@ puts 'creating users'
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     password: '123456',
-    email: Faker::Internet.email
+    email: Faker::Internet.emailimage.png
   )
   puts 'created user'
 end
 
+files = Dir.children("db/images").map do |file_name|
+  File.open("#{Rails.root}/db/images/#{file_name}")
+end
 puts 'creating starships'
-10.times do
-  file = URI.open("http://poopss.p.o.pic.centerblog.net/o/e04b1581.jpg")
+10.times do |i|
   starship = Starship.new(
     name: Faker::Fantasy::Tolkien.character,
     description: Faker::Books::Lovecraft.sentence,
@@ -27,7 +29,7 @@ puts 'creating starships'
     loaner_id: User.all.sample.id,
     price_per_day: rand(100..500)
   )
-  starship.photos.attach(io: file, filename: 'starship.png', content_type: 'image/png')
+  starship.photos.attach(io: files[i], filename: File.basename(files[i]), content_type: 'image/png')
   starship.save!
   puts 'created starship'
 end
