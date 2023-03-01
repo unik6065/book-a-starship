@@ -1,1 +1,22 @@
-<h1> Starships</h1>
+<div class = "m-3 text-center">
+  <h1 class="mb-0">Starships</h1>
+</div>
+<div class="cards p-5">
+  <% @starships.each do |starship| %>
+      <div class="card-trip p-2">
+        <% starship.photos.each do |photo| %>
+          <%= cl_image_tag photo.key, class:"img" %>
+        <% end %>
+        <%# <%= render "carousel_photos" %>
+        <div class="card-trip-infos">
+          <div>
+            <h2><%= starship.name %></h2>
+            <h3><%= starship.pickup_city %></h3>
+            <p><%= starship.description %></p>
+          </div>
+          <h2 class="card-trip-pricing"><%= starship.price_per_day%></h2>
+        </div>
+        <%= link_to "See details", starship_path(starship), class: "btn btn-warning"  %>
+      </div>
+  <% end %>
+</div>

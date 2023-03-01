@@ -1,5 +1,6 @@
 class StarshipsController < ApplicationController
   before_action :set_starship, only: %i[new create show update destroy]
+  
   def index
     @starships = Starship.all
   end
@@ -10,7 +11,7 @@ class StarshipsController < ApplicationController
 
   def create
     @starship = Starship.new(starship_params)
-    @starship.renter = current_user
+    @starship.loaner_id = current_user.id
     if @starship.save
       redirect_to starship_path(@starship)
     else
@@ -44,6 +45,6 @@ class StarshipsController < ApplicationController
   end
 
   def starship_params
-    params.require(:starship).permit(:name, :description, :pickup_city, :price_per_day, :loaner_id, photos: [])
+    params.require(:starship).permit(:name, :description, :pickup_city, :price_per_day, photos: [])
   end
 end
