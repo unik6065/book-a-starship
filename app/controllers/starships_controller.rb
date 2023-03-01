@@ -19,6 +19,7 @@ class StarshipsController < ApplicationController
   end
 
   def show
+    @starship = Starship.find(params[:id])
   end
 
   def edit
