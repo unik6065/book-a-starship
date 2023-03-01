@@ -4,7 +4,13 @@
   </div>
   <div class="row">
      <div class="col-sm-4 border"><h1>maps</h1></div>
-    <div class="col-sm-8 border info-starship-card"><h1>info</h1></div>
+    <div class="col-sm-8 border info-starship-card">
+    <h1>info</h1>
+    <%= @starship.name %>
+    <div class="info-starship-bubble">
+    <p> <%= @starship.description %></p>
+    </div>
+    </div>
   </div>
 
 </div>
