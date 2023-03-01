@@ -14,6 +14,9 @@ class RentalsController < ApplicationController
     @rental = Rental.new(rental_params)
     @rental.renter = current_user
     @rental.starship = Starship.find(params[:starship_id])
+    # rental price is calculated by multiplying the price per day of the starship
+    # by the number of days and is at minimum equal to the price per day
+    @rental.price = [@rental.starship.price_per_day * (@rental.end_date - @rental.start_date).to_i, @rental.starship.price_per_day].max
     if @rental.save
       redirect_to rental_path(@rental)
     else
