@@ -1,10 +1,19 @@
-body {
+.background-image {
   background-image: url("https://rare-gallery.com/uploads/posts/985243-science-fiction-Star-Trek-spaceship.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat, repeat;
   background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
+  height: 100vh;
+
+  .second-container{
+    text-align: center;
+    display: block;
+  }
   h1, h2{
     color:white;
   }
