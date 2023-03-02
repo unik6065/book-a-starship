@@ -4,14 +4,22 @@
   border-radius: 5px;
   box-shadow: 1px 1px 3px gray;
   margin-right: 20px;
+  max-width: 1200px;
+
 }
 
 .card-rental-photo {
   width: 250px;
   height: 200px;
-  border: 2px;
+  border: 10px;
 }
 
 .card-rental-info {
   padding-left: 30px;
+}
+
+.card-rental-header {
+  margin-top: 10px;
+  margin-bottom: 10px;
+
 }

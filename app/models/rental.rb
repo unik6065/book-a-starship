@@ -9,4 +9,6 @@ class Rental < ApplicationRecord
     with: /\A\d{4}-\d{2}-\d{2}\z/, message: "must be in the format YYYY-MM-DD"
   }
   validates :price, presence: true
+
+  delegate :loaner, to: :starship
 end
