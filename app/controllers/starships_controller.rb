@@ -1,6 +1,7 @@
 class StarshipsController < ApplicationController
-  before_action :set_starship, only: %i[new create show update destroy]
-  
+  before_action :set_starship, only: %i[show update destroy]
+  skip_before_action :authenticate_user!, only: %i[index show]
+
   def index
     @starships = Starship.all
   end
