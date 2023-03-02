@@ -10,9 +10,9 @@ class Starship < ApplicationRecord
   validates :price_per_day, numericality: { only_numeric: true }, presence: true
 
   def attach_photos
-    return if new_photos.blank?
+    return if photos.blank?
 
-    photos.attach(new_photos)
+    @starship.attach(photos)
     self.new_photos = []
   end
 end
