@@ -9,6 +9,9 @@ class Starship < ApplicationRecord
   validates :description, presence: true
   validates :price_per_day, numericality: { only_numeric: true }, presence: true
 
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
+
   def average_rate
     sum = 0
     rentals.each do |rental|
