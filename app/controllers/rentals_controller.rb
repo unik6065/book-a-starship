@@ -47,17 +47,21 @@ class RentalsController < ApplicationController
   # This method is called when the user clicks on the "Accept" button on the rental
   # The rental ID is passed as a parameter
   # It changes the status of the rental to "accepted"
-  def accept!
+  def accept
     @rental.status = 1
     @rental.save
+    redirect_to rentals_path, notice: 'Rental accepted.'
+    flash[:notice] = "Rental accepted."
   end
 
   # This method is called when the user clicks on the "Decline" button on the rental
   # The rental ID is passed as a parameter
   # It changes the status of the rental to "declined"
-  def decline!
+  def decline
     @rental.status = 2
     @rental.save
+    redirect_to rentals_path, notice: 'Rental declined.'
+    flash[:notice] = "Rental declined."
   end
 
   private

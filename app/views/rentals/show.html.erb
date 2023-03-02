@@ -1,4 +1,5 @@
 <h2>Show rental</h2>
+<p>Starship:<%= @rental.starship.name%> Status: <strong><%= @rental.status%></strong></p>
 <p>
   <strong>Start date:</strong>
   <%= @rental.start_date %>
@@ -13,13 +14,13 @@
 </p>
 <p>
   <strong>Pickup city:</strong>
-  <%= @rental.pickup_city %>
+  <%= @rental.starship.pickup_city %>
 </p>
-<%# display Accept and Decline buttons if rental.pending?%>
-<% if @rental.pending? %>
+<%# display Accept and Decline buttons if rental.pending? and the current user is the loaner%>
+<% if @rental.pending? && @rental.starship.loaner.id == current_user.id %>
   <%# Button to accept the rental%>
-  <%= link_to 'Accept', accept_rental_path(@rental), method: :put %>
+  <%= link_to 'Accept', accept_rental_path(@rental), method: :patch %>
   <%# Button to decline the rental%>
-  <%= link_to 'Decline', decline_rental_path(@rental), method: :put %>
+  <%= link_to 'Decline', decline_rental_path(@rental), method: :patch %>
 <% end %>
 <%= link_to 'Back', rentals_path %>
