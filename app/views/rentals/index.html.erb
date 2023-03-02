@@ -2,6 +2,11 @@
   <h2 style="text-align: center;">My Bookings</h2>
 </div>
 
+<% if flash[:notice] %>
+  <script>
+    alert("<%= j flash[:notice] %>");
+  </script>
+<% end %>
 
 <div class="row justify-content-center">
   <% @rentals.each do |rental| %>
@@ -25,6 +30,16 @@
         <button type="button" class="btn btn-primary">Write a review</button>
       </div>
 
+
+      <%# display Accept and Decline buttons if rental.pending?%>
+      <%# if rental.pending? %>
+        <%#= link_to 'Accept', accept_rental_path(rental), method: :patch %>
+        <%#= link_to 'Decline', decline_rental_path(rental), method: :patch %>
+      <%# end %>
+      <%# display Delete only if the current user is the loaner%>
+      <%# if rental.starship.loaner_id == current_user.id %>
+        <%#= link_to 'Delete', rental_path(rental), method: :delete %>
+      <%# end %>
     </div>
     <% else %>
       <p>You have no rentals</p>

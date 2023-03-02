@@ -1,0 +1,38 @@
+.profil-container{
+  display: grid;
+  width: 100%;
+  height: 90vh;
+  grid-template-columns: repeat(12, auto);
+  padding-top: 25px;
+
+  .profil-info{
+    grid-column-start: 1;
+    grid-column-end: 10;
+  }
+
+  .profil-navbar{
+    grid-column-start: 10;
+    grid-column-end: 12;
+  }
+}
+
+.profil-navbar{
+  .profil-card {
+    width: 100%;
+    height: 40px;
+    border: 0.5px solid #ddd;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+}
+
+.profil-card{
+  &:hover{
+    box-shadow: 2px 0 5px #ded;
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
