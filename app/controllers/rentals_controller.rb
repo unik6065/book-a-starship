@@ -1,5 +1,5 @@
 class RentalsController < ApplicationController
-  before_action :set_rental, only: %i[show edit update destroy]
+  before_action :set_rental, only: %i[show edit update destroy accept decline]
 
   # Index only shows rentals for the current user
   def index
@@ -42,6 +42,26 @@ class RentalsController < ApplicationController
   end
 
   def show
+  end
+
+  # This method is called when the user clicks on the "Accept" button on the rental
+  # The rental ID is passed as a parameter
+  # It changes the status of the rental to "accepted"
+  def accept
+    @rental.status = :accepted
+    @rental.save
+    redirect_to rentals_path, notice: 'Rental accepted.'
+    flash[:notice] = "Rental accepted."
+  end
+
+  # This method is called when the user clicks on the "Decline" button on the rental
+  # The rental ID is passed as a parameter
+  # It changes the status of the rental to "declined"
+  def decline
+    @rental.status = :declined
+    @rental.save
+    redirect_to rentals_path, notice: 'Rental declined.'
+    flash[:notice] = "Rental declined."
   end
 
   private
