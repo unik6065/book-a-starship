@@ -1,5 +1,5 @@
 class StarshipsController < ApplicationController
-  before_action :set_starship, only: %i[show update destroy]
+  before_action :set_starship, only: %i[show edit update destroy]
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
@@ -27,7 +27,7 @@ class StarshipsController < ApplicationController
   end
 
   def update
-    if @starship.update(params[:starship])
+    if @starship.update(starship_params)
       redirect_to starship_path(@starship)
     else
       render :new, status: :unprocessable_entity
