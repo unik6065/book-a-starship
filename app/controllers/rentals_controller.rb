@@ -6,6 +6,14 @@ class RentalsController < ApplicationController
     @rentals = Rental.where(renter_id: current_user.id)
   end
 
+  def bookings
+    @rentals = Rental.where(renter: current_user)
+  end
+
+  def requests
+    @rentals = Rental.joins(:starship).where(starship: { loaner_id: current_user.id })
+  end
+
   def new
     @rental = Rental.new
     @starship = Starship.find(params[:starship_id])

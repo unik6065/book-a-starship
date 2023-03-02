@@ -5,7 +5,7 @@
   box-shadow: 1px 1px 3px gray;
   margin-right: 20px;
   max-width: 1200px;
-
+  margin-bottom: 20px;
 }
 
 .card-rental-photo {
@@ -22,4 +22,15 @@
   margin-top: 10px;
   margin-bottom: 10px;
 
+}
+
+.card-rental-status {
+  display: flex;
+  width: 100px;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(26, 137, 23, 1);
+  color: white;
+  border-radius: 5px;
 }

@@ -20,24 +20,22 @@
       </div>
 
       <div class="col-sm-9 card-rental-info">
-        <div class="row">
-          <div class="col-sm-10">
-            <h3><%= rental.starship.name %></h3>
-          </div>
-
-          <div class="col-sm-2 card-rental-status">
-            <%= rental.status %>
-          </div>
-        </div>
-
+        <h3><%= rental.starship.name %></h3>
         <p><%= rental.starship.description %></p>
         <p>Start:<%= rental.start_date %></p>
         <p>End: <%= rental.end_date %></p>
         <p>Owner: <%= rental.loaner.last_name %> <%= rental.loaner.first_name %></p>
         <p>Total price: CHF <%= rental.price %>.-</p>
-        <button type="button" class="btn btn-primary">Cancel booking</button>
-        <button type="button" class="btn btn-primary">Write a review</button>
+        <%# display Accept and Decline buttons if rental.pending?%>
+        <% if rental.pending? %>
+        <%= link_to 'Accept', accept_rental_path(rental), method: :patch, class: "btn btn-primary" %>
+        <%= link_to 'Decline', decline_rental_path(rental), method: :patch, class: "btn btn-primary" %>
+        <% end %>
+        <% if rental.starship.loaner_id == current_user.id %>
+        <%= link_to 'Delete', rental_path(rental), method: :delete, class: "btn btn-primary" %>
+        <% end %>
       </div>
+
 
     </div>
     <% else %>
