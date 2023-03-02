@@ -14,7 +14,7 @@ class Starship < ApplicationRecord
     rentals.each do |rental|
       sum += rental.review.rating
     end
-    (sum.to_f / rentals.length).truncate(1)
+    (sum.to_f / rentals.length).round(1)
   end
 
   def attach_photos
