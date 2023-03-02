@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
+  get '/profile', to: 'pages#profil'
   resources :starships do
     resources :rentals, only: %i[new create]
   end
