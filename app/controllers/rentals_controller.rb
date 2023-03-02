@@ -48,7 +48,7 @@ class RentalsController < ApplicationController
   # The rental ID is passed as a parameter
   # It changes the status of the rental to "accepted"
   def accept
-    @rental.status = 1
+    @rental.status = :accepted
     @rental.save
     redirect_to rentals_path, notice: 'Rental accepted.'
     flash[:notice] = "Rental accepted."
@@ -58,7 +58,7 @@ class RentalsController < ApplicationController
   # The rental ID is passed as a parameter
   # It changes the status of the rental to "declined"
   def decline
-    @rental.status = 2
+    @rental.status = :declined
     @rental.save
     redirect_to rentals_path, notice: 'Rental declined.'
     flash[:notice] = "Rental declined."
