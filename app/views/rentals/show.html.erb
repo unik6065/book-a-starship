@@ -1,1 +1,25 @@
 <h2>Show rental</h2>
+<p>
+  <strong>Start date:</strong>
+  <%= @rental.start_date %>
+</p>
+<p>
+  <strong>End date:</strong>
+  <%= @rental.end_date %>
+</p>
+<p>
+  <strong>Price:</strong>
+  <%= @rental.price %>
+</p>
+<p>
+  <strong>Pickup city:</strong>
+  <%= @rental.pickup_city %>
+</p>
+<%# display Accept and Decline buttons if rental.pending?%>
+<% if @rental.pending? %>
+  <%# Button to accept the rental%>
+  <%= link_to 'Accept', accept_rental_path(@rental), method: :put %>
+  <%# Button to decline the rental%>
+  <%= link_to 'Decline', decline_rental_path(@rental), method: :put %>
+<% end %>
+<%= link_to 'Back', rentals_path %>
