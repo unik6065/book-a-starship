@@ -6,13 +6,11 @@
   padding-top: 25px;
 
   .profil-info{
-    display: grid;
     grid-column-start: 1;
     grid-column-end: 10;
   }
 
   .profil-navbar{
-    display: grid;
     grid-column-start: 10;
     grid-column-end: 12;
   }
@@ -32,4 +30,9 @@
   &:hover{
     box-shadow: 2px 0 5px #ded;
   }
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
 }
