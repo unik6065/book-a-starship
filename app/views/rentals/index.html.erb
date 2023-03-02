@@ -1,20 +1,36 @@
 <h2>My rentals</h2>
-<% @rentals.each do |rental| %>
+
+<div class="row">
+  <div class="col-sm-3"><h4>Profile</h4></div>
+  <div class="col-sm-9">
+    <h4>My rentals</h4>
+    <div>
+
+      <% @rentals.each do |rental| %>
   <%# display only the rentals for the current user%>
   <% if rental.renter_id == current_user.id %>
-    <div class="rental">
-      <h3>Rental ID:<%= rental.id%> Starship:<%= rental.starship.name %></h3>
-      <%# display all photos of the starship%>
-      <ul>
+    <div class="row rental card-rental-card">
+      <div class="col-sm-3 card-rental-photo">
         <% rental.starship.photos.each do |photo|%>
-          <li><%= cl_image_tag photo.key, height: 100, width:150, crop: :fill %></li>
+          <%= cl_image_tag photo.key, height: 200, width:250, crop: :fill %>
         <%end%>
-      </ul>
+      </div>
+
+      <div class="col-sm-9 card-rental-info">
+        <%# <h3>Rental ID:<%= rental.id%><h3><%= rental.starship.name %></h3>
+      <%# display all photos of the starship%>
       <p><%= rental.starship.description %></p>
-      <p>Start:<%= rental.start_date %> End:<%= rental.end_date %></p>
+      <p>Start: <%= rental.start_date %></p>
+      <p>End: <%= rental.end_date %></p>
       <p>Total price: CHF <%= rental.price %>.-</p>
+      </div>
+
     </div>
   <% else %>
     <p>You have no rentals</p>
   <% end %>
 <% end %>
+    </div>
+
+  </div>
+</div>
