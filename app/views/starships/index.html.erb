@@ -11,12 +11,12 @@
         <div class="card-trip-infos">
           <div>
             <h2><%= starship.name %></h2>
-            <h3><%= starship.pickup_city %></h3>
+            <h3><%='<i class="fa-solid fa-location-dot"></i>'.html_safe %> <%= starship.pickup_city %></h3>
             <p><%= starship.description %></p>
           </div>
-          <h2 class="card-trip-pricing"><%= starship.price_per_day%></h2>
+          <h2 class="card-trip-pricing"><%= starship.price_per_day %> CHF</h2>
         </div>
-        <%= link_to "See details", starship_path(starship), class: "btn btn-warning"  %>
+        <%= link_to "See details", starship_path(starship), class: "btn btn-warning" %>
       </div>
   <% end %>
 </div>

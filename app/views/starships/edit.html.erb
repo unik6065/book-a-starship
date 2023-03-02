@@ -1,0 +1,11 @@
+<div class="form-container">
+  <h2>Update your starship</h2>
+  <%= simple_form_for @starship do |f| %>
+    <%= f.input :name %>
+    <%= f.input :description, as: :text %>
+    <%= f.input :pickup_city%>
+    <%= f.input :price_per_day, as: :currency %>
+    <%= f.input :photos, as: :file, input_html: {multiple: true, accept: "image/*"} %>
+    <%= f.button :submit, "Update", class: "btn btn-warning" %>
+  <% end %>
+</div>
