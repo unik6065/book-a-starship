@@ -1,4 +1,3 @@
-require 'pry-byebug'
 class Starship < ApplicationRecord
   belongs_to :loaner, class_name: 'User'
   has_many :rentals, dependent: :destroy
