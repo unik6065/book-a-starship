@@ -15,4 +15,10 @@ Rails.application.routes.draw do
       get :decline
     end
   end
+
+  resources :rentals do
+    member do
+      resources :reviews, only: %i[new create]
+    end
+  end
 end
