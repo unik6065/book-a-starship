@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   get '/profile', to: 'pages#profil'
   resources :starships do
     resources :rentals, only: %i[new create]
-    resources :reviews, only: %i[index]
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
