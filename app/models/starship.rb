@@ -13,9 +13,7 @@ class Starship < ApplicationRecord
   def average_rate
     sum = 0
     rentals.each do |rental|
-      rental.reviews.each do |review|
-        sum += review.rating
-      end
+      sum += rental.review.rating
     end
     (sum.to_f / rentals.length).truncate(1)
   end
