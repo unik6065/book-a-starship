@@ -5,7 +5,7 @@
     <%= f.input :description, as: :text %>
     <%= f.input :pickup_city%>
     <%= f.input :price_per_day, as: :currency %>
-    <%= f.input :photos, as: :file, input_html: {multiple: true, accept: "image/*"} %>
+    <%= f.input :new_photos, as: :file, input_html: {multiple: true, accept: "image/*"} %>
     <%= f.button :submit, "Update", class: "btn btn-warning" %>
   <% end %>
 </div>
