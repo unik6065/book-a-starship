@@ -43,13 +43,13 @@ RSpec.describe User, type: :model do
       user = User.create(first_name: 'toto', last_name: 'toto', email: 'toto45@gmail.com', password: '123456')
       user2 = User.create(first_name: 'toto', last_name: 'toto', email: 'toto@gmail.com', password: '123456')
       starship = Starship.create(name: 'test', description: 'test', price_per_day: 125, loaner: user2)
-      expect(user.owner_of?(starship.id)).to eq(false)
+      expect(user.owner_of?(starship)).to eq(false)
     end
 
     it 'owner_of? should return true if the user is the owner of this starship' do
       user = User.create(first_name: 'toto', last_name: 'toto', email: 'toto45@gmail.com', password: '123456')
       starship = Starship.create(name: 'test', description: 'test', price_per_day: 125, loaner: user)
-      expect(user.owner_of?(starship.id)).to eq(true)
+      expect(user.owner_of?(starship)).to eq(true)
     end
   end
 end

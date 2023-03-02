@@ -12,7 +12,7 @@ class User < ApplicationRecord
     Starship.where(loaner: self).length >= 1
   end
 
-  def owner_of?(starship_id)
-    self == Starship.find(starship_id).loaner
+  def owner_of?(starship)
+    self == Starship.find(starship.id).loaner
   end
 end
