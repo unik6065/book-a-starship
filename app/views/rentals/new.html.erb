@@ -5,7 +5,7 @@
 <div class="form-container d-flex flex-column text-center rounded">
   <h4>Rent the <%= @starship.name %></h4>
   <% @starship.photos.each do |photo| %>
-    <%= cl_image_tag photo.key, class:"img rounded mb-3" %>
+    <%= cl_image_tag photo.key, class:"img rounded shadow mb-3" %>
   <% end %>
   <div class="form-control bg-white" data-controller='rental' data-rental-price-per-day-value="<%= @starship.price_per_day %>">
     <%= simple_form_for [@starship, @rental] do |f| %>
