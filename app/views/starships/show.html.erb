@@ -20,17 +20,17 @@
         <p> <%= @starship.description %></p>
       </div>
       <div class="info-starship-bubble">
-      <h6> Reviews: </h6>
-      <ul class="list-group">
-        <%@starship.reviews.each do |review| %>
-          <li class= "list-group-item"><%= review.content%> - <%= review.rating %></li>
-        <%end%>
-      </ul>
+        <h6> Reviews: </h6>
+        <ul class="list-group">
+          <%@starship.reviews.each do |review| %>
+            <li class= "list-group-item"><%= review.content%> - <%= review.rating %></li>
+          <%end%>
+        </ul>
       </div>
       <div class="d-flex justify-content-end">
-      <button type="button" class="btn btn-primary">
-      <%=link_to "Reserve this starship", new_starship_rental_path(@starship) %>
-      </button>
+        <button type="button" class="btn btn-primary">
+          <%=link_to "Book this starship", new_starship_rental_path(@starship) %>
+        </button>
       </div>
     </div>
     <div class="col-sm-4 info-starship-map sticky-bottom">
@@ -40,5 +40,4 @@
             data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
       </div>
     </div>
-
   </div>

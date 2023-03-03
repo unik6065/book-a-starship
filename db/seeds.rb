@@ -144,7 +144,8 @@ puts 'creating rentals'
     end_date: Faker::Date.forward(days: 23),
     starship_id: Starship.all.sample.id,
     renter_id: User.all.sample.id,
-    price: rand(1000..5000)
+    price: rand(1000..5000),
+    status: Rental.statuses.keys.sample
   )
   puts 'created rental'
 end
@@ -155,11 +156,12 @@ content = ["Super vaisseau bien équipé ! Très agréable à piloter", "Je suis
   "Vaisseau vieillissant et qui secoue beaucoup. A réparer au plus vite svp !", "Le personnel est super sympa et le vaisseau propre. Je recommande !",
   "Séjour icroyable ! Rien à redire", "La chambre du vaisseau n'était pas très propre mais sinon ça allait. Manque d'un aspirateur"]
 
-  10.times do
+Rental.all.each do |rental|
+  next unless rental.accepted?
   Review.create!(
     content: content.sample,
     rating: rand(3..5),
-    rental_id: Rental.all.sample.id
+    rental:
   )
   puts 'created review'
 end
