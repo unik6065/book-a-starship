@@ -1,8 +1,8 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
     <a class="navbar-brand d-flex align-items-center" href="/">
-      <%= image_tag "logo.jpg", alt: "Logo", class: "rounded-circle" %>
-      <p class= "m-2">BOOK A STARSHIP<p>
+      <%= image_tag "logo bis.png", alt: "Logo", class: "rounded-circle" %>
+      <h1 class= "m-2">BOOK A STARSHIP</h1>
 </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -13,10 +13,10 @@
         <% if user_signed_in? %>
           <li class="nav-item active">
           <li class="nav-item active">
-            <%= link_to "Home", root_path, class: "nav-link" %>
+            <%= link_to "Home", root_path, class: "nav-link p-3" %>
           </li>
           <li class="nav-item dropdown">
-          <%= image_tag "https://images-platform.99static.com//i2finf1LKuexfSine7--YuL7sHo=/0x0:1000x1000/fit-in/500x500/99designs-contests-attachments/116/116583/attachment_116583047", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <%= image_tag "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2Wus-2dU5YFG80UQy5_H1n7i7WwcW8vY3EQ&usqp=CAU", class: "avatar dropdown-toggle mt-1", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="#">My bookings</a> <%#<%= link_to "Action", "#", class: "dropdown-item" %>
               <%= link_to  'Profil', profile_path, class: "dropdown-item" %>

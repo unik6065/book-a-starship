@@ -1,7 +1,10 @@
 .navbar-lewagon {
+  padding: 5px;
   justify-content: space-between;
   background: rgb(22, 32, 62);
-  p {
+  h1 {
+    font-family: 'Gugi', cursive;
+    font-size: 24px;
     color :white;
   }
   position: sticky;
@@ -12,6 +15,9 @@
   flex-grow: 0;
   .nav-link{
     color:white;
+    font-family: 'Gugi', cursive;
+    font-size: 18px;
+    text-align: center;
   }
 }
 
