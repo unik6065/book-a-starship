@@ -9,7 +9,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.rental = @rental
     if @review.save!
-      redirect_to rentals_path, notice: "Review created. Thank you!"
+      redirect_to bookings_rentals_path, notice: "Review created. Thank you!"
       flash[:notice] = "Review created. Thank you!"
     else
       render :new, status: :unprocessable_entity

@@ -24,7 +24,7 @@ class RentalsController < ApplicationController
     # by the number of days and is at minimum equal to the price per day
     @rental.price = [@rental.starship.price_per_day * (@rental.end_date - @rental.start_date).to_i, @rental.starship.price_per_day].max
     if @rental.save
-      redirect_to rentals_path
+      redirect_to bookings_rentals_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -35,7 +35,7 @@ class RentalsController < ApplicationController
 
   def update
     if @rental.update(rental_params)
-      redirect_to rental_path(@rental)
+      redirect_to bookings_rentals_path(@rental)
     else
       render :new, status: :unprocessable_entity
     end
@@ -43,7 +43,7 @@ class RentalsController < ApplicationController
 
   def destroy
     @rental.destroy
-    redirect_to rentals_path status: :see_other
+    redirect_to bookings_rentals_path status: :see_other
   end
 
   def show
