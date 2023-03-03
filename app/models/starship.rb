@@ -9,8 +9,8 @@ class Starship < ApplicationRecord
   validates :description, presence: true
   validates :price_per_day, numericality: { only_numeric: true }, presence: true
 
-  geocoded_by :address
-  after_validation :geocode, if: :will_save_change_to_address?
+  geocoded_by :pickup_city
+  after_validation :geocode, if: :will_save_change_to_pickup_city?
 
   def average_rate
     sum = 0
