@@ -2,23 +2,26 @@
 <%# create a new rental by selecting a start date and end date in the format YYYY-MM_DD%>
 <%# the start_date can't be prior to today%>
 <%# the end_date can't be prior to the start_date%>
-<div class="form-container">
-  <h2>Rent the <%= @starship.name %></h2>
-  <div class="rental-container" data-controller='rental' data-rental-price-per-day-value="<%= @starship.price_per_day %>">
-    <%= form_for [@starship, @rental] do |f| %>
-      <div class="field">
+<div class="form-container d-flex flex-column text-center rounded">
+  <h4>Rent the <%= @starship.name %></h4>
+  <% @starship.photos.each do |photo| %>
+    <%= cl_image_tag photo.key, class:"img rounded mb-3" %>
+  <% end %>
+  <div class="form-control bg-white" data-controller='rental' data-rental-price-per-day-value="<%= @starship.price_per_day %>">
+    <%= simple_form_for [@starship, @rental] do |f| %>
+      <div class="form-label">
         <%= f.label :start_date %><br>
         <%= f.date_field :start_date, min: Date.today, data: { action: "change->rental#calculateSum", "rental-target": "startDate" } %>
       </div>
-      <div class="field">
+      <div class="field mb-2">
         <%= f.label :end_date %><br>
-        <%= f.date_field :end_date, min: Date.tomorrow, data: { action: "change->rental#calculateSum", "rental-target": "endDate" } %>
+        <%= f.date_field :end_date, min: Date.tomorrow, data: { action: "change->rental#calculateSum", "rental-target": "endDate" }%>
       </div>
-      <div class="actions">
-        <%= f.submit data: {"rental-target": "bookButton"}, disabled: true%>
+      <div>
+        <%= f.button :submit, "Confirm booking", class: "btn btn-primary", data: {"rental-target": "bookButton"}, disabled: true %>
       </div>
     <% end %>
-    <div>
+    <div class= "rounded m-2">
       <input type="label" id='rental-price-label' data-rental-target='calculatePrice' disabled>
     </div>
   </div>
