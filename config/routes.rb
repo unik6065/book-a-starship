@@ -11,23 +11,14 @@ Rails.application.routes.draw do
 
   # Define a collection of route that show bookings from the point of view of renter and reservations from the point of view of loaner
   resources :rentals do
+    resources :reviews, only: %i[new create]
     collection do
       get :bookings
       get :requests
     end
-  end
-
-  # Define a route to accept and decline a rental
-  resources :rentals do
     member do
       get :accept
       get :decline
-    end
-  end
-
-  resources :rentals do
-    member do
-      resources :reviews, only: %i[new create]
     end
   end
 end

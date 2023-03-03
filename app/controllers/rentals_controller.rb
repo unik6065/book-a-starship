@@ -24,7 +24,7 @@ class RentalsController < ApplicationController
     # by the number of days and is at minimum equal to the price per day
     @rental.price = [@rental.starship.price_per_day * (@rental.end_date - @rental.start_date).to_i, @rental.starship.price_per_day].max
     if @rental.save
-      redirect_to rentals_path
+      redirect_to bookings_rentals_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -35,7 +35,7 @@ class RentalsController < ApplicationController
 
   def update
     if @rental.update(rental_params)
-      redirect_to rental_path(@rental)
+      redirect_to bookings_rentals_path(@rental)
     else
       render :new, status: :unprocessable_entity
     end
@@ -43,7 +43,8 @@ class RentalsController < ApplicationController
 
   def destroy
     @rental.destroy
-    redirect_to rentals_path status: :see_other
+    redirect_to bookings_rentals_path, notice: 'Rental was successfully canceled.'
+    flash[:notice] = "Rental was successfully canceled."
   end
 
   def show
@@ -55,8 +56,8 @@ class RentalsController < ApplicationController
   def accept
     @rental.status = :accepted
     @rental.save
-    redirect_to rentals_path, notice: 'Rental accepted.'
-    flash[:notice] = "Rental accepted."
+    redirect_to bookings_rentals_path(@rental), notice: 'Booking accepted.'
+    flash[:notice] = "Booking accepted."
   end
 
   # This method is called when the user clicks on the "Decline" button on the rental
@@ -65,8 +66,8 @@ class RentalsController < ApplicationController
   def decline
     @rental.status = :declined
     @rental.save
-    redirect_to rentals_path, notice: 'Rental declined.'
-    flash[:notice] = "Rental declined."
+    redirect_to bookings_rentals_path(@rental), notice: 'Booking declined.'
+    flash[:notice] = "Booking declined."
   end
 
   private

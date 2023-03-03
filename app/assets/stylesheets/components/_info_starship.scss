@@ -1,14 +1,20 @@
-.info-starship-header {
-  h1{
+// .info-starship-header {
+//   h1{
 
-  }
-  padding: 10px;
+//   }
+//   padding: 10px;
+// }
+
+.info-starship {
+  height: 100vh;
 }
 
 .info-starship-card {
   h4{
     text-decoration: underline;
   }
+  overflow: auto;
+
 }
 
 .info-starship-bubble {
@@ -19,4 +25,13 @@
   margin-top: 10px;
   margin-bottom: 10px;
   margin-right: 20px;
+}
+
+.info-starship-map {
+  z-index: 2;
+}
+
+.info-starship-img {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
