@@ -43,7 +43,8 @@ class RentalsController < ApplicationController
 
   def destroy
     @rental.destroy
-    redirect_to bookings_rentals_path status: :see_other
+    redirect_to bookings_rentals_path, notice: 'Rental was successfully canceled.'
+    flash[:notice] = "Rental was successfully canceled."
   end
 
   def show
@@ -55,8 +56,8 @@ class RentalsController < ApplicationController
   def accept
     @rental.status = :accepted
     @rental.save
-    redirect_to rentals_path, notice: 'Rental accepted.'
-    flash[:notice] = "Rental accepted."
+    redirect_to bookings_rentals_path(@rental), notice: 'Booking accepted.'
+    flash[:notice] = "Booking accepted."
   end
 
   # This method is called when the user clicks on the "Decline" button on the rental
@@ -65,8 +66,8 @@ class RentalsController < ApplicationController
   def decline
     @rental.status = :declined
     @rental.save
-    redirect_to rentals_path, notice: 'Rental declined.'
-    flash[:notice] = "Rental declined."
+    redirect_to bookings_rentals_path(@rental), notice: 'Booking declined.'
+    flash[:notice] = "Booking declined."
   end
 
   private

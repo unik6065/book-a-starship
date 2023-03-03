@@ -19,7 +19,7 @@ class ReviewsController < ApplicationController
   private
 
   def set_rental
-    @rental = Rental.find(params[:id])
+    @rental = Rental.find(params[:rental_id])
   end
 
   def review_params

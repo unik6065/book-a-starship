@@ -32,9 +32,11 @@
           <p>Total price: CHF <%= rental.price %>.-</p>
           <%# if rental status is pending, display Cancel booking%>
           <% if rental.status == "pending" %>
-            <%= link_to "Cancel booking", rental_path(rental), method: :destroy, class: "btn btn-primary" %>
+            <%= link_to "Cancel booking", rental_path(rental), data: { "turbo-method": :delete, turbo_confirm: 'Are you sure?' }, class: "btn btn-primary" %>
           <% end %>
-          <button type="button" class="btn btn-primary"><%= link_to "Write a review", new_review_path(rental)%></button>
+          <% if rental.review.blank? && rental.status == :accepted %>
+            <button type="button" class="btn btn-primary"><%= link_to "Write a review", new_rental_review_path(rental)%></button>
+          <% end %>
         </div>
       </div>
     <% else %>
