@@ -8,7 +8,7 @@
 <% end %>
 <div class="row justify-content-center">
   <% @rentals.each do |rental| %>
-    <%# display only the rentals for the current user%>
+    <%# display only the rentals for the current user if there is any bookings%>
     <% if rental.renter_id == current_user.id %>
       <div class="row rental card-rental-card">
         <div class="col-sm-3 card-rental-photo">
@@ -40,7 +40,7 @@
         </div>
       </div>
     <% else %>
-      <p>You have no rentals</p>
+      <p>You have no bookings</p>
     <% end %>
   <% end %>
 </div>
