@@ -1,9 +1,15 @@
 .navbar-lewagon {
+  padding: 5px;
   justify-content: space-between;
   background: rgb(22, 32, 62);
-  p {
-    color :white;
+
+  h1 {
+    font-family: 'Gugi', cursive;
+    font-size: 24px;
+    color: white;
   }
+
+
   position: sticky;
   top: 0;
   z-index: 1;
@@ -11,11 +17,27 @@
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
-  .nav-link{
-    color:white;
+
+  .nav-link {
+    color: white;
+    font-family: 'Gugi', cursive;
+    font-size: 18px;
+    text-align: center;
   }
 }
 
 .navbar-lewagon .navbar-brand img {
   width: 50px;
+}
+
+.navbar-user-info {
+  margin-top: 2px;
+  margin-right: 20px;
+
+  p {
+    margin-top: 10px;
+    font-family: 'Gugi', cursive;
+    font-size: 16px;
+    color: white;
+  }
 }

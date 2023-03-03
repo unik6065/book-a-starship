@@ -7,7 +7,7 @@
   <div class="carousel-inner">
     <%= starship.photos.each do |photo| %>
       <div class="carousel-item active">
-        <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+        <%= cl_image_tag photo.key, class:"img" %>
       </div>
     <% end %>
   </div>
