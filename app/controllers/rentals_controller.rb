@@ -2,8 +2,13 @@ class RentalsController < ApplicationController
   before_action :set_rental, only: %i[show edit update destroy accept decline]
 
   # Index only shows rentals for the current user
-  def index
-    @rentals = Rental.where(renter_id: current_user.id)
+
+  def bookings
+    @rentals = Rental.where(renter: current_user)
+  end
+
+  def requests
+    @rentals = Rental.joins(:starship).where(starship: { loaner_id: current_user.id })
   end
 
   def new

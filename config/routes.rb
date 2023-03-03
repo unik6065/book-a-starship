@@ -7,7 +7,16 @@ Rails.application.routes.draw do
   end
 
   # Define a route to access rentals index and show page and destroy a rental
-  resources :rentals, only: %i[index show destroy]
+  # resources :rentals, only: %i[index show destroy]
+
+  # Define a collection of route that show bookings from the point of view of renter and reservations from the point of view of loaner
+  resources :rentals do
+    collection do
+      get :bookings
+      get :requests
+    end
+  end
+
   # Define a route to accept and decline a rental
   resources :rentals do
     member do

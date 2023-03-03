@@ -1,0 +1,47 @@
+<div class="card-rental-header">
+  <h2 style="text-align: center;">My Bookings</h2>
+</div>
+
+<% if flash[:notice] %>
+  <script>
+    alert("<%= j flash[:notice] %>");
+  </script>
+<% end %>
+
+<div class="row justify-content-center">
+  <% @rentals.each do |rental| %>
+  <%# display only the rentals for the current user%>
+  <% if rental.renter_id == current_user.id %>
+    <div class="row rental card-rental-card">
+      <div class="col-sm-3 card-rental-photo">
+        <% rental.starship.photos.each do |photo|%>
+          <%= cl_image_tag photo.key, height: 200, width:250, crop: :fill %>
+  <%end%>
+      </div>
+
+      <div class="col-sm-9 card-rental-info">
+        <h3><%= rental.starship.name %></h3>
+        <p><%= rental.starship.description %></p>
+        <p>Start:<%= rental.start_date %></p>
+        <p>End: <%= rental.end_date %></p>
+        <p>Owner: <%= rental.loaner.last_name %> <%= rental.loaner.first_name %></p>
+        <p>Total price: CHF <%= rental.price %>.-</p>
+        <%# display Accept and Decline buttons if rental.pending?%>
+        <% if rental.pending? %>
+        <%= link_to 'Accept', accept_rental_path(rental), method: :patch, class: "btn btn-primary" %>
+        <%= link_to 'Decline', decline_rental_path(rental), method: :patch, class: "btn btn-primary" %>
+        <% end %>
+        <% if rental.starship.loaner_id == current_user.id %>
+        <%= link_to 'Delete', rental_path(rental), method: :delete, class: "btn btn-primary" %>
+        <% end %>
+      </div>
+
+
+    </div>
+    <% else %>
+      <p>You have no rentals</p>
+    <% end %>
+  <% end %>
+  </div>
+  </div>
+</div>
