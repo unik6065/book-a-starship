@@ -1,8 +1,19 @@
 <div class = "m-3 text-center">
   <h1 class="mb-0">Starships</h1>
 </div>
-<div class="cards p-5">
-  <% @starships.each do |starship| %>
+<div class="container">
+  <div id='map' style='width: 1300px; height: 450px;'></div>
+  <script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoianVsc2QiLCJhIjoiY2xlcjl3YmZjMHVrcjN4bzc5bWFzMDhuMSJ9.qgC2HVME7pUEJP5i45uuWA';
+    const map = new mapboxgl.Map({
+        container: 'map', // container ID
+        style: 'mapbox://styles/mapbox/streets-v12', // style URL
+        center: [-74.5, 40], // starting position [lng, lat]
+        zoom: 2, // starting zoom
+    });
+  </script>
+  <div class="cards p-5">
+    <% @starships.each do |starship| %>
       <div class="card-trip p-2">
         <% starship.photos.each do |photo| %>
           <%= cl_image_tag photo.key, class:"img" %>
@@ -18,5 +29,6 @@
         </div>
         <%= link_to "See details", starship_path(starship), class: "btn btn-warning" %>
       </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
