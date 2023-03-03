@@ -17,12 +17,13 @@
         <%= f.label :end_date %><br>
         <%= f.date_field :end_date, min: Date.tomorrow, data: { action: "change->rental#calculateSum", "rental-target": "endDate" }%>
       </div>
+      <div class= "rounded m-2">
+      <input type="label" id='rental-price-label' data-rental-target='calculatePrice' disabled>
+    </div>
       <div>
         <%= f.button :submit, "Confirm booking", class: "btn btn-primary", data: {"rental-target": "bookButton"}, disabled: true %>
       </div>
     <% end %>
-    <div class= "rounded m-2">
-      <input type="label" id='rental-price-label' data-rental-target='calculatePrice' disabled>
-    </div>
+
   </div>
 </div>
