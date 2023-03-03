@@ -1,17 +1,14 @@
 <div class = "m-3 text-center">
   <h1 class="mb-0">Starships</h1>
 </div>
-<div class="container">
-  <div id='map' style='width: 1300px; height: 450px;'></div>
-  <script>
-    mapboxgl.accessToken = 'pk.eyJ1IjoianVsc2QiLCJhIjoiY2xlcjl3YmZjMHVrcjN4bzc5bWFzMDhuMSJ9.qgC2HVME7pUEJP5i45uuWA';
-    const map = new mapboxgl.Map({
-        container: 'map', // container ID
-        style: 'mapbox://styles/mapbox/streets-v12', // style URL
-        center: [-74.5, 40], // starting position [lng, lat]
-        zoom: 2, // starting zoom
-    });
-  </script>
+<div class="container position-relative">
+   <div style="width: 100%; height: 400px;"
+  data-controller="map"
+  data-map-markers-value="<%= @markers.to_json %>"
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+</div>
+
   <div class="cards p-5">
     <% @starships.each do |starship| %>
       <div class="card-trip p-2">
@@ -27,7 +24,7 @@
           </div>
           <h2 class="card-trip-pricing"><%= starship.price_per_day %> CHF</h2>
         </div>
-        <%= link_to "See details", starship_path(starship), class: "btn btn-warning" %>
+        <%= link_to "See details", starship_path(starship), class: "btn btn-primary" %>
       </div>
     <% end %>
   </div>
