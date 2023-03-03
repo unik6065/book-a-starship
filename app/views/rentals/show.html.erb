@@ -19,8 +19,8 @@
 <%# display Accept and Decline buttons if rental.pending? and the current user is the loaner%>
 <% if @rental.pending? && @rental.starship.loaner.id == current_user.id %>
   <%# Button to accept the rental%>
-  <%= link_to 'Accept', accept_rental_path(@rental), method: :patch %>
+  <%= link_to 'Accept', accept_rental_path(@rental), method: :patch, class: "btn-major" %>
   <%# Button to decline the rental%>
-  <%= link_to 'Decline', decline_rental_path(@rental), method: :patch %>
+  <%= link_to 'Decline', decline_rental_path(@rental), method: :patch, class: "btn-major" %>
 <% end %>
 <%= link_to 'Back', rentals_path %>

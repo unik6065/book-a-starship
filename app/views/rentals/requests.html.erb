@@ -28,11 +28,11 @@
         <p>Total price: CHF <%= rental.price %>.-</p>
         <%# display Accept and Decline buttons if rental.pending?%>
         <% if rental.pending? %>
-        <%= link_to 'Accept', accept_rental_path(rental), method: :patch, class: "btn btn-primary" %>
-        <%= link_to 'Decline', decline_rental_path(rental), method: :patch, class: "btn btn-primary" %>
+        <%= link_to 'Accept', accept_rental_path(rental), method: :patch, class: "btn-major" %>
+        <%= link_to 'Decline', decline_rental_path(rental), method: :patch, class: "btn-major" %>
         <% end %>
         <% if rental.starship.loaner_id == current_user.id %>
-        <%= link_to 'Delete', rental_path(rental), method: :delete, class: "btn btn-primary" %>
+        <%= link_to 'Delete', rental_path(rental), method: :delete, class: "btn-major" %>
         <% end %>
       </div>
 
