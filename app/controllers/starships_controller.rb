@@ -4,6 +4,9 @@ class StarshipsController < ApplicationController
 
   def index
     @starships = Starship.all
+    @markers = @starships.geocoded.map do |starship|
+      starship_marker(starship)
+    end
   end
 
   def new
@@ -21,6 +24,7 @@ class StarshipsController < ApplicationController
   end
 
   def show
+    @markers = [starship_marker(@starship)]
   end
 
   def edit
@@ -48,4 +52,14 @@ class StarshipsController < ApplicationController
   def starship_params
     params.require(:starship).permit(:name, :description, :pickup_city, :price_per_day, photos: [])
   end
+
+  def starship_marker(starship)
+    {
+      lat: starship.latitude,
+      lng: starship.longitude,
+      info_window_html: render_to_string(partial: "info_window", locals: {starship: starship}),
+      marker_html: render_to_string(partial: "marker")
+    }
+  end
+
 end

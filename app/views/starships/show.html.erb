@@ -1,17 +1,13 @@
-<div>
-  <div class="info-starship-header">
-    <h1 class="text-center"><%= @starship.name %></h1>
-  </div>
-  <div class="row">
-    <div class="col-sm-4">
-      <%= image_tag("map.png", size: "250x400") %>
-    </div>
+<div class="container">
+  <div class="row info-starship">
     <div class="col-sm-8 info-starship-card">
-      <div class="ml-5">
+      <h3 class="text-left"><%= @starship.name %></h3>
+      <div class="info-starship-img">
         <% @starship.photos.each do |photo|%>
           <%= cl_image_tag photo.key, height: 200, width: 350, crop: :fill%>
         <% end %>
       </div>
+
       <h4>Pickup city</h4>
       <%= @starship.pickup_city%>
       <p></p>
@@ -37,4 +33,12 @@
       </button>
       </div>
     </div>
+    <div class="col-sm-4 info-starship-map sticky-bottom">
+      <div style="width: 90%; height: 700px;"
+            data-controller="map"
+            data-map-markers-value="<%= @markers.to_json %>"
+            data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+    </div>
+
   </div>
