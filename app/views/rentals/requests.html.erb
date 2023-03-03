@@ -9,38 +9,38 @@
 <div class="row justify-content-center">
   <% @rentals.each do |rental| %>
     <%# display only the rentals for the current user%>
-    <% if rental.renter_id == current_user.id %>
-      <div class="row rental card-rental-card">
-        <div class="col-sm-3 card-rental-photo">
-          <% rental.starship.photos.each do |photo|%>
-            <%= cl_image_tag photo.key, height: 200, width:250, crop: :fill %>
-          <%end%>
-        </div>
-        <div class="col-sm-9 card-rental-info">
-          <div class="row">
-            <div class="col-sm-10">
-              <h3><%= rental.starship.name %></h3>
-            </div>
-            <div class="col-sm-2 card-rental-status">
-              <%= rental.status %>
-            </div>
-          </div>
-          <p><%= rental.starship.description %></p>
-          <p>Start:<%= rental.start_date %></p>
-          <p>End: <%= rental.end_date %></p>
-          <p>Owner: <%= rental.loaner.last_name %> <%= rental.loaner.first_name %></p>
-          <p>Total price: CHF <%= rental.price %>.-</p>
-          <%# display Accept and Decline buttons if rental.pending?%>
-          <% if rental.pending? %>
-            <%= link_to 'Accept', accept_rental_path(rental), method: :patch, class: "btn btn-primary" %>
-            <%= link_to 'Decline', decline_rental_path(rental), method: :patch, class: "btn btn-primary" %>
-          <% end %>
-          <%# action delete supprimée car inutile, on ne supprime pas l'historique des demandes%>
-        </div>
+    <%# if rental.renter_id == current_user.id %>
+    <div class="row rental card-rental-card">
+      <div class="col-sm-3 card-rental-photo">
+        <% rental.starship.photos.each do |photo|%>
+          <%= cl_image_tag photo.key, height: 200, width:250, crop: :fill %>
+        <%end%>
       </div>
-    <% else %>
-      <p></p>
-    <% end %>
+      <div class="col-sm-9 card-rental-info">
+        <div class="row">
+          <div class="col-sm-10">
+            <h3><%= rental.starship.name %></h3>
+          </div>
+          <div class="col-sm-2 card-rental-status">
+            <%= rental.status %>
+          </div>
+        </div>
+        <p><%= rental.starship.description %></p>
+        <p>Start:<%= rental.start_date %></p>
+        <p>End: <%= rental.end_date %></p>
+        <p>Owner: <%= rental.loaner.last_name %> <%= rental.loaner.first_name %></p>
+        <p>Total price: CHF <%= rental.price %>.-</p>
+        <%# display Accept and Decline buttons if rental.pending?%>
+        <% if rental.pending? %>
+          <%= link_to 'Accept', accept_rental_path(rental), method: :patch, class: "btn btn-primary" %>
+          <%= link_to 'Decline', decline_rental_path(rental), method: :patch, class: "btn btn-primary" %>
+        <% end %>
+        <%# action delete supprimée car inutile, on ne supprime pas l'historique des demandes%>
+      </div>
+    </div>
+    <%# else %>
+    <p> </p>
+    <%# end %>
   <% end %>
 </div>
 </div>
